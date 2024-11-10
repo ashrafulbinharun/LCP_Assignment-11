@@ -3,7 +3,6 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Post;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -23,8 +22,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'avatar_url',
+        'bio',
     ];
 
     /**
@@ -53,9 +55,9 @@ class User extends Authenticatable
     protected function getAvatar(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->avatar_url
-            ? asset('storage/' . $this->avatar_url)
-            : 'https://ui-avatars.com/api/?name=' . $this->name,
+            get: fn () => $this->avatar_url
+            ? asset('storage/'.$this->avatar_url)
+            : 'https://ui-avatars.com/api/?name='.$this->name,
         );
     }
 
