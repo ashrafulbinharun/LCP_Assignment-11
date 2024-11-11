@@ -20,7 +20,7 @@
             </ul>
         </div>
         <hr class="my-6 border-gray-700 sm:mx-auto lg:my-8" />
-        <span class="block text-sm text-gray-200 sm:text-center">© 2024
+        <span class="block text-sm text-gray-200 sm:text-center">© {{ now()->year }}
             <a href="{{ route('home') }}" class="hover:underline">Barta</a>. All Rights
             Reserved.</span>
     </div>

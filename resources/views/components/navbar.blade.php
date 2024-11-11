@@ -56,15 +56,15 @@
                         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
 
                         @if (auth()->check())
-                            {{-- <a href="{{ route('profile.index', auth()->user()->username) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                                tabindex="-1" id="user-menu-item-0">
+                            <a href="{{ route('profile.index', auth()->user()->username) }}" wire:navigate class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem" tabindex="-1" id="user-menu-item-0">
                                 Your Profile
                             </a>
-                            <a href="{{ route('profile.edit', auth()->user()->username) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                                tabindex="-1" id="user-menu-item-1">
+                            <a href="{{ route('profile.edit', auth()->user()->username) }}" wire:navigate class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem" tabindex="-1" id="user-menu-item-1">
                                 Edit Profile
-                            </a> --}}
-                            <livewire:logout />
+                            </a>
+                            <livewire:auth.logout />
                         @else
                             <a href="{{ route('login') }}" wire:navigate class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1"
                                 id="user-menu-item-0">

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Auth;
 
+use App\Livewire\GuestComponent;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Title;
@@ -26,14 +27,9 @@ class RegisterUser extends GuestComponent
 
     public function register()
     {
-        $this->validate();
+        $validated = $this->validate();
 
-        $user = User::create([
-            'name' => $this->name,
-            'username' => $this->username,
-            'email' => $this->email,
-            'password' => $this->password,
-        ]);
+        $user = User::create($validated);
 
         Auth::login($user);
 
@@ -44,6 +40,6 @@ class RegisterUser extends GuestComponent
 
     public function render()
     {
-        return view('livewire.register-user');
+        return view('livewire.auth.register-user');
     }
 }

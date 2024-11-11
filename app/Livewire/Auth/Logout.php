@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -12,7 +12,6 @@ class Logout extends Component
         Auth::logout();
 
         session()->invalidate();
-
         session()->regenerateToken();
 
         return $this->redirectRoute('home', navigate: true);
@@ -20,6 +19,6 @@ class Logout extends Component
 
     public function render()
     {
-        return view('livewire.logout');
+        return view('livewire.auth.logout');
     }
 }

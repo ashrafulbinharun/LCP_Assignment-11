@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Auth;
 
+use App\Livewire\GuestComponent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Title;
@@ -20,12 +21,7 @@ class LoginUser extends GuestComponent
 
     public function login()
     {
-        $this->validate();
-
-        $credentials = [
-            'email' => $this->email,
-            'password' => $this->password,
-        ];
+        $credentials = $this->validate();
 
         if (! Auth::attempt($credentials, $this->remember)) {
             throw ValidationException::withMessages([
@@ -37,11 +33,11 @@ class LoginUser extends GuestComponent
 
         session()->flash('message', 'Login successfully.');
 
-        return redirect()->intended(route('home'));
+        $this->redirectIntended('/', navigate: true);
     }
 
     public function render()
     {
-        return view('livewire.login-user');
+        return view('livewire.auth.login-user');
     }
 }
