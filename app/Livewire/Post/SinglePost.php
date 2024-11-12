@@ -27,6 +27,8 @@ class SinglePost extends Component
 
     public function render()
     {
-        return view('livewire.post.single-post');
+        return view('livewire.post.single-post', [
+            'post' => $this->post,
+        ]);
     }
 }

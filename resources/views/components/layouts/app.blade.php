@@ -11,10 +11,11 @@
 
     <title>{{ $title ?? 'Page Title' }} | {{ config('app.name', 'Barta') }}</title>
 
+    @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100" x-data x-on:click=($dispatch('clear-results'))>
     <x-navbar />
 
     <main class="container max-w-xl min-h-screen px-2 mx-auto mt-8 space-y-8 md:px-0">
@@ -27,7 +28,10 @@
 
         {{ $slot }}
     </main>
+
     <x-footer />
+
+    @livewireScripts
 </body>
 
 </html>

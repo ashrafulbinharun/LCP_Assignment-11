@@ -10,17 +10,11 @@ use Livewire\Component;
 class UserProfile extends Component
 {
     public User $user;
-
     public $name;
-
     public $bio;
-
     public $offset = 0;
-
-    public $limit = 5;
-
+    public $limit = 10;
     public $posts;
-
     public $loadMore;
 
     public function mount($user, $loadMore = true, $offset = 0)

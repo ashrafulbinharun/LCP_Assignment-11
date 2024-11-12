@@ -118,7 +118,7 @@
                 Cancel
             </button>
             <button type="submit"
-                class="px-3 py-2 text-sm font-semibold text-white bg-gray-600 rounded-md shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">
+                class="px-3 py-2 text-sm font-semibold text-white bg-gray-900 border-2 border-gray-800 rounded-lg shadow-sm hover:bg-transparent hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">
                 Save
             </button>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Post;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -10,12 +11,10 @@ use Livewire\Component;
 class HomeFeed extends Component
 {
     public $offset;
-
-    public $limit = 5;
-
+    public $limit = 10;
     public $posts;
-
     public $loadMore;
+    public $userId;
 
     public function mount($loadMore = true, $offset = 0)
     {
@@ -25,13 +24,24 @@ class HomeFeed extends Component
         $this->loadPosts();
     }
 
+    #[On('user-selected')]
+    public function filterPostsByUser($userId)
+    {
+        $this->userId = $userId;
+        $this->offset = 0;
+        $this->posts = collect();
+        $this->loadPosts();
+    }
+
     public function loadPosts()
     {
-        $newPosts = Post::with('user')->latest()
-            ->offset($this->offset)
-            ->limit($this->limit)
-            ->get();
+        $query = Post::with('user')->latest();
 
+        if ($this->userId) {
+            $query->where('user_id', $this->userId);
+        }
+
+        $newPosts = $query->offset($this->offset)->limit($this->limit)->get();
         $this->posts = $this->posts->merge($newPosts);
 
         if ($newPosts->count() < $this->limit) {

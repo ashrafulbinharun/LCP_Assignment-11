@@ -9,15 +9,10 @@ use Livewire\Component;
 class InfoUpdateForm extends Component
 {
     public User $user;
-
     public $name;
-
     public $username;
-
     public $password;
-
     public $password_confirmation;
-
     public $bio;
 
     public function rules()

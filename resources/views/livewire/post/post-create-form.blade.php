@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <button type="submit" class="flex items-center gap-2 px-4 py-2 -m-2 text-xs font-semibold text-white bg-gray-800 rounded-full hover:bg-black">
+        <button type="submit" class="flex items-center gap-2 px-4 py-2 -m-2 text-xs font-semibold text-white bg-gray-800 rounded-lg hover:bg-black">
             Post
         </button>
     </div>
