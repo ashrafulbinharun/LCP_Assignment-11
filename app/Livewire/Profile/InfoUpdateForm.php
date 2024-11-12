@@ -32,7 +32,7 @@ class InfoUpdateForm extends Component
         ];
     }
 
-    public function mount(User $user)
+    public function mount($user)
     {
         $this->user = $user;
         $this->name = $user->name;

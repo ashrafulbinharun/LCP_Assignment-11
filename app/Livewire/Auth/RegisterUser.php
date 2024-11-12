@@ -12,16 +12,16 @@ use Livewire\Attributes\Validate;
 class RegisterUser extends GuestComponent
 {
     #[Validate('required|string')]
-    public $name = '';
+    public $name;
 
     #[Validate('required|string|unique:users,username')]
-    public $username = '';
+    public $username;
 
     #[Validate('required|email|unique:users,email')]
-    public $email = '';
+    public $email;
 
     #[Validate('required|confirmed|min:6')]
-    public $password = '';
+    public $password;
 
     public $password_confirmation;
 
@@ -33,7 +33,7 @@ class RegisterUser extends GuestComponent
 
         Auth::login($user);
 
-        session()->flash('message', 'You have successfully registered.');
+        session()->flash('message', 'You have successfully registered');
 
         return $this->redirectRoute('home', navigate: true);
     }

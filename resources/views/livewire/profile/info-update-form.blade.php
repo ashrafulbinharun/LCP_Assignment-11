@@ -28,7 +28,7 @@
                                 ]) />
                             </div>
                             @error('name')
-                                <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                                <p class="mt-2 text-sm font-semibold text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -44,7 +44,7 @@
                                 ]) />
                             </div>
                             @error('username')
-                                <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                                <p class="mt-2 text-sm font-semibold text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -69,7 +69,7 @@
                                 ]) />
                             </div>
                             @error('password')
-                                <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                                <p class="mt-2 text-sm font-semibold text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -86,7 +86,7 @@
                                 ]) />
                             </div>
                             @error('password_confirmation')
-                                <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                                <p class="mt-2 text-sm font-semibold text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -103,9 +103,7 @@
                             ])>{{ $user->bio }}</textarea>
                         </div>
                         @error('bio')
-                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">
-                                {{ $message }}
-                            </p>
+                            <p class="mt-2 text-sm font-semibold text-red-600">{{ $message }}</p>
                         @enderror
                         <p class="mt-3 text-sm leading-6 text-gray-600">
                             Write a few sentences about yourself.

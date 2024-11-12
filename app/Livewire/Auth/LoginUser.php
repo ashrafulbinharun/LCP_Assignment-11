@@ -12,10 +12,10 @@ use Livewire\Attributes\Validate;
 class LoginUser extends GuestComponent
 {
     #[Validate('required|email|exists:users,email')]
-    public $email = '';
+    public $email;
 
     #[Validate('required')]
-    public $password = '';
+    public $password;
 
     public $remember = false;
 
@@ -30,10 +30,9 @@ class LoginUser extends GuestComponent
         }
 
         session()->regenerate();
+        session()->flash('message', 'Login successfully');
 
-        session()->flash('message', 'Login successfully.');
-
-        $this->redirectIntended('/', navigate: true);
+        $this->redirectIntended(navigate: true);
     }
 
     public function render()

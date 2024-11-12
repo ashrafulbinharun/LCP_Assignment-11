@@ -20,7 +20,7 @@ class DeleteAccountForm extends Component
         $this->validate();
 
         if (! Hash::check($this->password, $this->user->password)) {
-            $this->addError('password', 'The provided password is incorrect.');
+            $this->addError('password', 'The provided password is incorrect');
 
             return;
         }

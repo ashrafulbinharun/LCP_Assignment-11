@@ -11,7 +11,7 @@ class UserProfileEdit extends Component
 {
     public User $user;
 
-    public function mount(User $user)
+    public function mount($user)
     {
         $this->user = $user;
     }

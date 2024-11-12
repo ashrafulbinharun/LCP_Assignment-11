@@ -28,11 +28,11 @@
                 </form>
             </div>
 
-            <div class="sm:ml-6 sm:flex sm:items-center">
-                {{-- <a href="{{ route('posts.create') }}"
+            <div class="space-x-6 sm:ml-6 sm:flex sm:items-center">
+                <a href="{{ route('posts.create') }}" wire:navigate
                     class="text-gray-900 hover:text-white border-2 border-gray-800 hover:bg-gray-900 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hidden md:block">
                     Create Post
-                </a> --}}
+                </a>
 
                 {{-- Profile dropdown  --}}
                 <div class="relative ml-3" x-data="{ open: false }">
@@ -141,19 +141,19 @@
                 </div>
             </div>
             {{-- Derpdown Menu --}}
-            <div class="mt-3 space-y-1">
+            <div class="mt-3 space-x-2">
                 @if (auth()->check())
-                    {{-- <a href="{{ route('posts.create') }}" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Create
-                        New Post
+                    <a href="{{ route('posts.create') }}" wire:navigate class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Create
+                        Create Post
                     </a>
-                    <a href="{{ route('profile.index', auth()->user()->username) }}"
+                    <a href="{{ route('profile.index', auth()->user()->username) }}" wire:navigate
                         class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Your
                         Profile
                     </a>
-                    <a href="{{ route('profile.edit', auth()->user()->username) }}"
+                    <a href="{{ route('profile.edit', auth()->user()->username) }}" wire:navigate
                         class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Edit
                         Profile
-                    </a> --}}
+                    </a>
                     <livewire:logout />
                 @else
                     <a href="{{ route('login') }}" wire:navigate class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Login
