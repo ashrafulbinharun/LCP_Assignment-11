@@ -11,7 +11,7 @@
                 <img x-bind:src="imagePreview" class="object-cover w-full mb-4 rounded-lg min-h-auto max-h-64 md:max-h-72" alt="Post Image Preview" />
 
                 {{-- Button to Remove Image --}}
-                <button type="button" @click="removeImage()"
+                <button type="button" wire:click="clearImage" @click="removeImage()"
                     class="absolute flex items-center justify-center w-6 h-6 text-white bg-gray-600 rounded-full top-2 right-2 hover:bg-red-600">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -49,8 +49,10 @@
             </div>
         </div>
 
-        <button type="submit" class="flex items-center gap-2 px-4 py-2 -m-2 text-xs font-semibold text-white bg-gray-800 rounded-lg hover:bg-black">
-            Post
+        <button type="submit" wire:loading.attr="disabled" wire:loading.class="cursor-not-allowed" wire:loading.attr="aria-disabled:true"
+            wire:loading.remove.attr="aria-disabled:false" class="flex items-center gap-2 px-4 py-2 -m-2 text-xs font-semibold text-white bg-gray-800 rounded-lg hover:bg-black">
+            <span wire:loading>Uploading...</span>
+            <span wire:loading.remove>Post</span>
         </button>
     </div>
 </form>

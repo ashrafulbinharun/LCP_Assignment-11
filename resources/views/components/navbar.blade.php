@@ -25,7 +25,7 @@
                             aria-expanded="false" aria-haspopup="true">
                             <span class="sr-only">Open user menu</span>
                             @if (auth()->check())
-                                <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->get_avatar }}" alt="{{ auth()->user()->name }}" />
+                                <img class="w-8 h-8 rounded-full" src="{{ $user->get_avatar }}" alt="{{ $user->name }}" />
                             @else
                                 <img class="w-8 h-8 rounded-full" src="https://avatars.githubusercontent.com/u/150423186?v=4" alt="Guest User" />
                             @endif
@@ -38,12 +38,12 @@
                         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
 
                         @if (auth()->check())
-                            <a href="{{ route('profile.index', auth()->user()->username) }}" wire:navigate class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                role="menuitem" tabindex="-1" id="user-menu-item-0">
+                            <a href="{{ route('profile.index', $user->username) }}" wire:navigate class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
+                                tabindex="-1" id="user-menu-item-0">
                                 Your Profile
                             </a>
-                            <a href="{{ route('profile.edit', auth()->user()->username) }}" wire:navigate class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                role="menuitem" tabindex="-1" id="user-menu-item-1">
+                            <a href="{{ route('profile.edit', $user->username) }}" wire:navigate class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
+                                tabindex="-1" id="user-menu-item-1">
                                 Edit Profile
                             </a>
                             <livewire:auth.logout />
@@ -99,7 +99,7 @@
                 {{-- User Avatar --}}
                 <div class="flex-shrink-0">
                     @if (auth()->check())
-                        <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->get_avatar }}" alt="{{ auth()->user()->name }}" />
+                        <img class="w-8 h-8 rounded-full" src="{{ $user->get_avatar }}" alt="{{ $user->name }}" />
                     @else
                         <img class="w-8 h-8 rounded-full" src="https://avatars.githubusercontent.com/u/150423186?v=4" alt="Guest User" />
                     @endif
@@ -107,10 +107,10 @@
                 <div class="ml-3">
                     @if (auth()->check())
                         <h2 class="text-base font-medium text-gray-800">
-                            {{ auth()->user()->name }}
+                            {{ $user->name }}
                         </h2>
                         <p class="text-sm font-medium text-gray-500">
-                            {{ auth()->user()->email }}
+                            {{ $user->email }}
                         </p>
                     @else
                         <div class="text-base font-medium text-gray-800">
@@ -128,11 +128,11 @@
                     <a href="{{ route('posts.create') }}" wire:navigate class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Create
                         Create Post
                     </a>
-                    <a href="{{ route('profile.index', auth()->user()->username) }}" wire:navigate
+                    <a href="{{ route('profile.index', $user->username) }}" wire:navigate
                         class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Your
                         Profile
                     </a>
-                    <a href="{{ route('profile.edit', auth()->user()->username) }}" wire:navigate
+                    <a href="{{ route('profile.edit', $user->username) }}" wire:navigate
                         class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Edit
                         Profile
                     </a>

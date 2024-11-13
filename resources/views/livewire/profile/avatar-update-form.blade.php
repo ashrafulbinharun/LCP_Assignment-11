@@ -9,23 +9,28 @@
         </p>
     </header>
 
-    <form class="mt-6" wire:submit="uploadAvatar">
+    <form class="mt-6" wire:submit.prevent="uploadAvatar">
         <div class="col-span-full">
             <div class="flex items-center mt-2 gap-x-2">
                 <div class="relative">
                     <img class="object-cover w-16 h-16 rounded-full ring-2 ring-gray-300" src="{{ $avatar ? $avatar->temporaryUrl() : $existingAvatar }}" alt="{{ $user->name }}" />
                 </div>
 
-                <x-input-label for="avatar">
+                <label for="avatar">
                     <div
                         class="inline-flex items-center px-4 py-2 ml-3 text-xs font-semibold tracking-widest text-gray-700 uppercase transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Choose
                     </div>
-                </x-input-label>
+                </label>
 
                 <input class="hidden" id="avatar" type="file" wire:model="avatar">
 
-                <x-primary-button>Update</x-primary-button>
+                <button type="submit" wire:loading.attr="disabled" wire:loading.class="cursor-not-allowed" wire:loading.attr="aria-disabled:true"
+                    wire:loading.remove.attr="aria-disabled:false"
+                    class="inline-flex items-center px-4 py-2 ml-3 text-xs font-semibold tracking-widest text-gray-700 uppercase transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <span wire:loading>Uploading ...</span>
+                    <span wire:loading.remove>Update</span>
+                </button>
             </div>
             @error('avatar')
                 <p class="mt-4 text-sm font-semibold text-red-600">{{ $message }}</p>
@@ -35,7 +40,10 @@
 
     <div class="mt-6">
         <form wire:submit="deleteAvatar">
-            <x-danger-button>Delete Current Avatar</x-danger-button>
+            <button
+                class="inline-flex items-center px-4 py-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-red-600 border border-transparent rounded-md hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                Delete Current Avatar
+            </button>
         </form>
     </div>
 </section>

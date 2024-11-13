@@ -16,7 +16,7 @@
 </head>
 
 <body class="bg-gray-100" x-data x-on:click=($dispatch('clear-results'))>
-    <x-navbar />
+    <x-navbar :user="auth()->user()" />
 
     <main class="container max-w-xl min-h-screen px-2 mx-auto mt-8 space-y-8 md:px-0">
         @if (session()->has('message'))

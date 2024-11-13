@@ -16,11 +16,19 @@ class PostCreateForm extends Component
     #[Validate('nullable|max:2048|mimetypes:image/jpeg,image/png,image/jpg')]
     public $image;
 
+    public $removeImage = false;
+
+    public function clearImage()
+    {
+        $this->removeImage = true;
+        $this->image = null;
+    }
+
     public function save()
     {
         $validated = $this->validate();
 
-        if ($this->image) {
+        if ($this->image && ! $this->removeImage) {
             $validated['image'] = $this->image->storePublicly('post_images', ['disk' => 'public']);
         }
 

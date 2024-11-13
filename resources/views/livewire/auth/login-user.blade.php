@@ -29,21 +29,6 @@
 
             {{-- password --}}
             <div>
-                {{--
-                <div class="flex items-center justify-between">
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                    {{-- forgot password --}}
-                {{--
-                    <div class="flex items-center justify-end mt-4">
-                        @if (Route::has('password.request'))
-                            <a class="text-sm text-gray-900 underline hover:text-gray-900" href="{{ route('password.request') }}">
-                                {{ __('Forgot your password?') }}
-                            </a>
-                        @endif
-                    </div>
-                </div>
-                --}}
-
                 {{-- password --}}
                 <div class="mt-2">
                     <input id="password" wire:model="password" type="password" autocomplete="current-password" placeholder="••••••••" @class([
@@ -62,7 +47,7 @@
             <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
                     <input id="remember_me" type="checkbox" class="text-gray-600 border-gray-300 rounded shadow-sm" wire:model.boolean="remember">
-                    <span class="text-sm text-gray-900 ms-2 ">{{ __('Remember me') }}</span>
+                    <span class="text-sm text-gray-900 ms-2 ">Remember me</span>
                 </label>
             </div>
 

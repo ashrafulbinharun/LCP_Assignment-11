@@ -16,7 +16,7 @@ class PostEdit extends Component
 
     public Post $post;
 
-    #[Validate('required|string|min:5')]
+    #[Validate('required|string')]
     public $content;
 
     #[Validate('nullable|max:2048|mimetypes:image/jpeg,image/png,image/jpg')]
@@ -27,7 +27,6 @@ class PostEdit extends Component
     public function mount($post)
     {
         $this->post = $post;
-        $this->image = $post->image;
         $this->content = $post->content;
         $this->removeExistingImage = false;
     }
@@ -39,15 +38,16 @@ class PostEdit extends Component
         $validated = $this->validate();
 
         // image removal
-        if ($this->removeExistingImage && $this->post->image) {
-            Storage::disk('public')->delete($this->post->image);
+        if ($this->removeExistingImage === true) {
+            $this->deleteImage($this->post->image);
             $validated['image'] = null;
-        }
-
-        // new image
-        if ($this->image && $this->post->image) {
-            Storage::disk('public')->delete($this->post->image);
+        } else if ($this->image) {
+            // new image
+            $this->deleteImage($this->post->image);
             $validated['image'] = $this->image->storePublicly('post_images', ['disk' => 'public']);
+        } else {
+            // retain old image
+            $validated['image'] = $this->post->image;
         }
 
         $this->post->update($validated);
@@ -55,6 +55,13 @@ class PostEdit extends Component
         session()->flash('message', 'Post updated');
 
         return $this->redirectRoute('posts.edit', ['post' => $this->post], navigate: true);
+    }
+
+    private function deleteImage($path)
+    {
+        if ($path) {
+            Storage::disk('public')->delete($path);
+        }
     }
 
     public function render()
